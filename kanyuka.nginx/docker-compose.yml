@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  kanyuka.info:
+    restart: on-failure
+    build: .
+    environment:
+      - MEMCACHED_ENTRYPOINT=memcache.parkingboxx.com
+      - MEMCACHED_PORT=11211
+    volumes:
+      - ./scripts:/scripts:rw
+      - ./logs:/app-log:rw
+    ports:
+      - "80:80"
+      - "443:443"
+      - "7443:7443"
+      - "8443:8443"
+

@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  php71.parkingboxx.com:
+    restart: on-failure
+    build: .
+    environment:
+      - WWW_SERVER_HOST=php71.parkingboxx.com
+      - WWW_SERVER_PORT=443
+      - MEMCACHED_ENTRYPOINT=memcache.parkingboxx.com
+      - MEMCACHED_PORT=11211
+    volumes:
+      - ./scripts:/scripts:rw
+      - ./logs:/app-log:rw
+    ports:
+      - "80:80"
+      - "443:443"
+
+  memcache.parkingboxx.com:
+    restart: on-failure
+    image: memcached

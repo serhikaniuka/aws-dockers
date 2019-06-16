@@ -1,4 +1,4 @@
-#please build before php image with command "docker build -t nginx1.16 ./"
+#please build image with command "docker build -t nginx1.16 ./"
 
 FROM alpine:3.9
 
